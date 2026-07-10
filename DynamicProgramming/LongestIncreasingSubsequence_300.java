@@ -19,3 +19,5 @@ class Solution {
 }
 /*Why is this dynamic Programming solution beacuse dp Storing previous indexes */
 /*dp[idx] represents longest increasing subsequence till idx */
+/*TC = O(n^2) */
+/*SC = O(N) */
