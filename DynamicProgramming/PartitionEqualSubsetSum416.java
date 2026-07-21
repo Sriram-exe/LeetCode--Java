@@ -31,3 +31,5 @@ class Solution {
     }
 }
 
+//TC = O(N) + O(N*Sum/2)
+//SC = O(Sum/2) + O(N*Sum/2)
