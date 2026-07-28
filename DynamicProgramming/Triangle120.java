@@ -18,3 +18,6 @@ class Solution {
         return dp[0][0];
     }
 }
+//Given a n*n right angle triangle i need to check minimum path to go from last row any element to first element
+//TC : O(N*N)
+//SC : O(N*N) - for dp array 
