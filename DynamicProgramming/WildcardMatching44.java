@@ -33,3 +33,44 @@ class Solution {
 }
 //TC : O(M*N)
 //SC : O(M*N) + O(Max(s,p) -> recursion stack space 
+
+class Solution {
+    public boolean isMatch(String p, String s) {
+        int n = s.length();
+        int m = p.length();
+        if(n==0 && m==0) return true;
+        boolean[][] dp = new boolean[n+1][m+1];
+        for(boolean[] row:dp){
+            Arrays.fill(row,false);
+        }
+        if(n>0 && m>0 && s.charAt(0)==p.charAt(0)){
+            dp[0][0] = true;
+        }
+        if(n>0 && s.charAt(0)=='?'){
+            dp[0][0] = true;
+        }
+        for(int i=1;i<=n;i++){
+            if(s.charAt(i-1)=='*'){
+                dp[i][0] = true;
+            }
+            else break;
+        }
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                if(s.charAt(i-1) == p.charAt(j-1)){
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                if(s.charAt(i-1)=='?'){
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                if(s.charAt(i-1)=='*'){
+                    dp[i][j] = dp[i-1][j] || dp[i][j-1];
+                }
+            }
+        }
+        return dp[n][m];
+    }
+}
+//Converted to tabulation Code 
+//TC : O(N*M) 
+//SC : O(N*M) elimenated extra Auxalery stack space complexity
